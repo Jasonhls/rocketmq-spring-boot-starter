@@ -60,4 +60,9 @@ public @interface RocketMQListener {
      */
     int consumeThreadMin() default 0;
 
+    /**
+     * 重试次数，默认不重试
+     * @return
+     */
+    int retryTimes() default 0;
 }

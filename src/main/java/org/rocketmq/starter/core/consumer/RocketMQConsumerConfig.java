@@ -2,10 +2,7 @@ package org.rocketmq.starter.core.consumer;
 
 
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
-
 import org.rocketmq.starter.core.RocketMQConfig;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.Map;
 
@@ -14,8 +11,6 @@ import java.util.Map;
  *
  * @author He Jialin
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
 public final class RocketMQConsumerConfig extends RocketMQConfig {
 
     /**
@@ -49,6 +44,63 @@ public final class RocketMQConsumerConfig extends RocketMQConfig {
      */
     private int consumeThreadMax;
 
+    private int retryTimes;
+
+    public int getRetryTimes() {
+        return retryTimes;
+    }
+
+    public void setRetryTimes(int retryTimes) {
+        this.retryTimes = retryTimes;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getConsumerGroup() {
+        return consumerGroup;
+    }
+
+    public void setConsumerGroup(String consumerGroup) {
+        this.consumerGroup = consumerGroup;
+    }
+
+    public MessageModel getMessageModel() {
+        return messageModel;
+    }
+
+    public void setMessageModel(MessageModel messageModel) {
+        this.messageModel = messageModel;
+    }
+
+    public Map<String, Class<?>> getTags() {
+        return tags;
+    }
+
+    public void setTags(Map<String, Class<?>> tags) {
+        this.tags = tags;
+    }
+
+    public int getConsumeThreadMin() {
+        return consumeThreadMin;
+    }
+
+    public void setConsumeThreadMin(int consumeThreadMin) {
+        this.consumeThreadMin = consumeThreadMin;
+    }
+
+    public int getConsumeThreadMax() {
+        return consumeThreadMax;
+    }
+
+    public void setConsumeThreadMax(int consumeThreadMax) {
+        this.consumeThreadMax = consumeThreadMax;
+    }
 
     public static ConsumerConfigBuilder builder() {
         return new ConsumerConfigBuilder();
@@ -94,6 +146,11 @@ public final class RocketMQConsumerConfig extends RocketMQConfig {
 
         public ConsumerConfigBuilder consumeThreadMin(int consumeThreadMin) {
             this.consumerConfig.setConsumeThreadMin(consumeThreadMin);
+            return this;
+        }
+
+        public ConsumerConfigBuilder retryTimes(int retryTimes){
+            this.consumerConfig.setRetryTimes(retryTimes);
             return this;
         }
 

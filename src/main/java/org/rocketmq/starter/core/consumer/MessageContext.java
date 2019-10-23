@@ -4,16 +4,11 @@ package org.rocketmq.starter.core.consumer;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.message.MessageQueue;
 
-import lombok.Data;
-import lombok.ToString;
-
 /**
  * 消费时，当前所消费的消息的上下文信息
  *
  * @author He Jialin
  */
-@ToString
-@Data
 public final class MessageContext {
 
     /**
@@ -30,5 +25,27 @@ public final class MessageContext {
      */
     private MessageExt messageExt;
 
+    public MessageQueue getMessageQueue() {
+        return messageQueue;
+    }
 
+    public void setMessageQueue(MessageQueue messageQueue) {
+        this.messageQueue = messageQueue;
+    }
+
+    public MessageExt getMessageExt() {
+        return messageExt;
+    }
+
+    public void setMessageExt(MessageExt messageExt) {
+        this.messageExt = messageExt;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageContext{" +
+                "messageQueue=" + messageQueue +
+                ", messageExt=" + messageExt +
+                '}';
+    }
 }

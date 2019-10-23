@@ -1,19 +1,12 @@
 package org.rocketmq.starter.core.consumer;
 
-import lombok.Data;
-
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  *
  * @author He Jialin
  */
-@Data
 public class SubscriptionGroup {
 
     private String topic;
@@ -46,4 +39,35 @@ public class SubscriptionGroup {
         return tagMethods.values();
     }
 
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public List<String> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<String> tagList) {
+        this.tagList = tagList;
+    }
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public void setTarget(Object target) {
+        this.target = target;
+    }
+
+    public Map<String, Method> getTagMethods() {
+        return tagMethods;
+    }
+
+    public void setTagMethods(Map<String, Method> tagMethods) {
+        this.tagMethods = tagMethods;
+    }
 }

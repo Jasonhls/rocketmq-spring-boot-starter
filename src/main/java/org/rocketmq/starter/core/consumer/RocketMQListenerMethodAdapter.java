@@ -39,12 +39,13 @@ public final class RocketMQListenerMethodAdapter<E> implements RocketMQConsumerL
                 .topic(rocketMQListener.topic())
                 .consumeThreadMax(rocketMQListener.consumeThreadMax())
                 .consumeThreadMin(rocketMQListener.consumeThreadMin())
+                .retryTimes(rocketMQListener.retryTimes())
                 .build();
         Map<String, Class<?>> tags = new HashMap<>();
         subscriptionGroup.getTagList().forEach(tag -> {
             RocketMQMessage rocketMQMessage = subscriptionGroup.getMethod(tag).getAnnotation(RocketMQMessage.class);
             tags.put(tag, rocketMQMessage.messageClass());
-            consumerConfig.setMessageClass(rocketMQMessage.messageClass());
+//            consumerConfig.setMessageClass(rocketMQMessage.messageClass());
         });
         consumerConfig.setTags(tags);
     }

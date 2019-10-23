@@ -1,6 +1,5 @@
 package org.rocketmq.starter.configuration;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -10,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @SuppressWarnings("WeakerAccess")
 @ConfigurationProperties(prefix = "spring.rocketmq")
-@Data
 public final class RocketMQProperties {
 
     /**
@@ -30,7 +28,38 @@ public final class RocketMQProperties {
 
     private Producer producer;
 
-    @Data
+    public String getNameServer() {
+        return nameServer;
+    }
+
+    public void setNameServer(String nameServer) {
+        this.nameServer = nameServer;
+    }
+
+    public int getConsumeThreadMin() {
+        return consumeThreadMin;
+    }
+
+    public void setConsumeThreadMin(int consumeThreadMin) {
+        this.consumeThreadMin = consumeThreadMin;
+    }
+
+    public int getConsumeThreadMax() {
+        return consumeThreadMax;
+    }
+
+    public void setConsumeThreadMax(int consumeThreadMax) {
+        this.consumeThreadMax = consumeThreadMax;
+    }
+
+    public Producer getProducer() {
+        return producer;
+    }
+
+    public void setProducer(Producer producer) {
+        this.producer = producer;
+    }
+
     public static class Producer {
 
         /**
@@ -70,6 +99,62 @@ public final class RocketMQProperties {
          */
         private int maxMessageSize = 1024 * 1024 * 4;
 
+
+        public String getGroup() {
+            return group;
+        }
+
+        public void setGroup(String group) {
+            this.group = group;
+        }
+
+        public int getSendMsgTimeout() {
+            return sendMsgTimeout;
+        }
+
+        public void setSendMsgTimeout(int sendMsgTimeout) {
+            this.sendMsgTimeout = sendMsgTimeout;
+        }
+
+        public int getCompressMsgBodyOverHowmuch() {
+            return compressMsgBodyOverHowmuch;
+        }
+
+        public void setCompressMsgBodyOverHowmuch(int compressMsgBodyOverHowmuch) {
+            this.compressMsgBodyOverHowmuch = compressMsgBodyOverHowmuch;
+        }
+
+        public int getRetryTimesWhenSendFailed() {
+            return retryTimesWhenSendFailed;
+        }
+
+        public void setRetryTimesWhenSendFailed(int retryTimesWhenSendFailed) {
+            this.retryTimesWhenSendFailed = retryTimesWhenSendFailed;
+        }
+
+        public int getRetryTimesWhenSendAsyncFailed() {
+            return retryTimesWhenSendAsyncFailed;
+        }
+
+        public void setRetryTimesWhenSendAsyncFailed(int retryTimesWhenSendAsyncFailed) {
+            this.retryTimesWhenSendAsyncFailed = retryTimesWhenSendAsyncFailed;
+        }
+
+        public boolean isRetryAnotherBrokerWhenNotStoreOk() {
+            return retryAnotherBrokerWhenNotStoreOk;
+        }
+
+        public void setRetryAnotherBrokerWhenNotStoreOk(boolean retryAnotherBrokerWhenNotStoreOk) {
+            this.retryAnotherBrokerWhenNotStoreOk = retryAnotherBrokerWhenNotStoreOk;
+        }
+
+        public int getMaxMessageSize() {
+            return maxMessageSize;
+        }
+
+        public void setMaxMessageSize(int maxMessageSize) {
+            this.maxMessageSize = maxMessageSize;
+        }
     }
 
 }
